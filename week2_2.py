@@ -9,24 +9,43 @@ ababcababc -> ab : A, abc : B -> ABAB
 import string
 
 
-with open('1.txt', 'r') as file:
+with open('LCS_text.txt', 'r+') as file:
     asc = string.ascii_uppercase
 
     strings = file.read()
     result_dict = {}
     k = 0
-    for i in range(0, len(strings), 2):
-        val = strings[i: i + 2]
-        if val not in result_dict.keys():
-            result_dict[val] = asc[k]
-            k += 1
 
-    with open('2.txt', 'w') as file2:
-        file2.write(str(result_dict))
+    with open('LCS_result.txt', 'w') as file2:
+        for i in range(0, len(strings), 2):
+            val = strings[i: i + 2]
+            if val not in result_dict.keys():
+                result_dict[val] = asc[k]
+                file2.write(asc[k])
+                k += 1
 
-with open('2.txt', 'r') as file3:
-    val = file3. read()
-    print(val)
+    with open('LCS_dict.txt', 'w') as file3:
+        for key, val in result_dict.items():
+            file3.write(key + ":" + val + '\n')
+
+
+with open('LCS_dict.txt', 'r') as file4:
+    str_dict = {}
+    dict_list = file4.readlines()
+    for i in dict_list:
+        line = i.split(':')
+        str_dict[line[1].strip()] = line[0]
+
+    with open('LCS_result.txt', 'r') as file5:
+        text = file5.read()
+        result = ''
+        for i in text:
+            result += str_dict[i]
+
+        print(result)
+
+
+
 
 
 # strings = "ababcababc"

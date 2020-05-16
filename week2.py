@@ -3,7 +3,7 @@
 """
 
 def answer(file_name):
-    result = []
+    # result = []
     with open(file_name + '.txt', 'r', encoding='UTF-8') as file:
         with open('result.txt', 'w', encoding='UTF-8') as result_f:
             lines = file.read().split('\n')
@@ -20,7 +20,7 @@ def answer(file_name):
                     string += std + str(count)
                     k += 1
                 result_f.write(string + '\n')
-                result.append(string)
+                # result.append(string)
 
     return result
 
